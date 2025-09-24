@@ -7,8 +7,6 @@
 
 # Ignore specific files
 style-guide.md
-package-lock.json
-package.json
 app.js
 
 # Ignore specific directories
