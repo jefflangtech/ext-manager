@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('../fonts/NotoSans-VariableFont_wdth\,wght.ttf');
+}
+
+:root {
+  --neutral-900: #091540;
+  --neutral-800: #202535;
+  --neutral-700: #2F364B;
+  --neutral-600: #535868;
+  --neutral-300: #C6C6C6;
+  --neutral-200: #D6E2F5;
+  --neutral-100: #EEEEEE;
+  --neutral-0: #FBFDFE;
+  --red-700: #C7231A;
+  --red-500: #DE4840;
+  --red-400: #F25C54;
+  --light-gradient: linear-gradient(180deg, #EBF2FC 0%, #DDFBF9 100%);
+  --dark-gradient: linear-gradient(180deg, #04091B 0%, #091540 100%);
+}

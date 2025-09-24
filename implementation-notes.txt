@@ -1,0 +1,48 @@
+#DESIGN NOTES
+
+There is a light mode and a dark mode → I know now there are built in features to implement light and dark, but I don't know how to do those, so I'll need to take a look at that.
+   
+It looks like cards are populated into each container, regardless of how the container is oriented, in order left-right, top-bottom. I think this indicates the container can be a simple flex container.
+
+I'll need to design/create a toggle button, that will be fun. They don't show a hover state when the toggle is inactive, but I think having something like a changing outline (the inactive toggle is all light grey, so perhaps a black outline?) will be a nice touch.
+
+Looks like the inactive/removed color is a deep red, and then the active/removed color is a lighter red. But this is switched from light mode to dark mode. I wonder if there is a way to simply specify the "alternate" color? That would seem to imply two full color sets where you might have:
+active-red: #XXXXXX
+dark-active-red: #XXXXXX
+
+I'm thinking that the page layout is mostly flex containers:
+- The hero container: logo + mode button
+- The menu container: heading + menu buttons (3 of them)
+  - This goes to 2 rows in mobile view
+- The cards container
+
+NOTE: again, see on cards: there is a drop shadow on each space-taking or background possessing element in a given container. So the hero container has a drop shadow. The menu buttons inside the menu container have dropshadows, and then the cards of course have drop shadows.
+
+For the cards:
+There is clearly a top/bottom portion and I'll consider that contents + controls
+
+What's interesting is the logo occupies a vertical space that extends down to the controls. I'm wondering whether it works to simply have a contents div, which would contain the header and the accompanying text, and then have the logo be a before pseudoelement. This might allow for seamless behavior if the logo isn't present or doesn't load correctly - the text content would then just take up all the space. Worth an experiment.
+
+That also keeps the card to two divs, and I like simpler.
+
+NOTE: there is a drop shadow on the cards
+
+
+#DESIGN MARKUP
+
+The bottom margin under the hero section is the same as under the card section. This splits the document into two descrete sections.
+
+The hero and menu divs both have their content centered vertically.
+
+The bottom margin under the menu section is half the bottom margin under the hero/main sections     
+
+For the cards:
+There is a top/bottom margin. There is a side margin. Internally the controls section is centered vertically, and fills the horizontal space similar to how the other flex-type containers do. The content section either has a left margin or the logo has a right margin. This does not match the left margin, and that tells me it's probably just a text fill to the available space.
+
+Ideally, if I have the card function so that it fills the space when the logo is unavailable, or vice versa, then the margin/padding needs to be on the logo.               
+
+
+
+→ TO DO: Can the card logo function as a before pseudoelement and still accomplish what I want it to?
+→ TO DO: Learn how light/dark mode can be implemented with new web features
+→ TO DO: Does flex allow me to control the size of my cards?    
