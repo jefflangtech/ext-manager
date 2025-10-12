@@ -17,4 +17,50 @@
   --red-400: #F25C54;
   --light-gradient: linear-gradient(180deg, #EBF2FC 0%, #DDFBF9 100%);
   --dark-gradient: linear-gradient(180deg, #04091B 0%, #091540 100%);
+  font-size: 8px;
 }
+
+body {
+  background: var(--light-gradient);
+  font-size: 2rem;
+  font-family: 'Noto Sans', sans-serif;
+  display: grid;
+  grid-template-columns: 
+    minmax(1.9rem, 1fr) 
+    [content-start] minmax(42.875rem, 146.25rem) [content-end] 
+    minmax(1.9rem, 1fr);
+  grid-template-rows: 5rem 1fr 8rem;
+}
+
+.popout {
+  background-color: var(--neutral-0);
+  border: 1px solid var(--neutral-200);
+  border-radius: 2rem;
+  box-shadow: 3px 0px 8px 3px var(--neutral-200);
+}
+
+#mode-switch {
+  width: 6.25rem;
+  height: 6.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+}
+
+main {
+  grid-column: content-start / content-end;
+  grid-row: 2;
+}
+
+.hero {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.hero > * {
+  margin-block: 1.5rem;
+  margin-inline: 2rem;
+}
+
