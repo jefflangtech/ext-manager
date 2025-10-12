@@ -24,12 +24,19 @@ body {
   background: var(--light-gradient);
   font-size: 2rem;
   font-family: 'Noto Sans', sans-serif;
+  color: var(--neutral-900);
   display: grid;
   grid-template-columns: 
     minmax(1.9rem, 1fr) 
     [content-start] minmax(42.875rem, 146.25rem) [content-end] 
     minmax(1.9rem, 1fr);
   grid-template-rows: 5rem 1fr 8rem;
+}
+
+h1 {
+  font-size: 4.25rem;
+  line-height: 100%;
+  letter-spacing: -1px;
 }
 
 .popout {
@@ -57,6 +64,7 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 4rem;
 }
 
 .hero > * {
@@ -64,3 +72,40 @@ main {
   margin-inline: 2rem;
 }
 
+.menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-block: 4rem;
+}
+
+.menu > h1 {
+  margin-right: auto;
+}
+
+.menu-button {
+  background-color: var(--neutral-0);
+  border-radius: 2.8rem;
+  margin-inline: 0.75rem;
+  padding-inline: 3.12rem;
+  flex: 0 0 auto;
+  height: 5.75rem;
+  line-height: 100%;
+}
+
+.card-container {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 382px;
+  height: 200px;
+  text-align: center;
+}
+
+.active {
+  background-color: var(--red-700);
+  color: var(--neutral-0);
+}
