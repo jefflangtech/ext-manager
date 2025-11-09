@@ -1,4 +1,60 @@
 <div class="card popout">
+  <style>
+    .card-content {
+      text-align: left;
+      display: flex;
+    }
+
+    .card-content > img {
+      width: 60px;
+      height: 60px;
+      margin-right: 2.5rem;
+    }
+
+    .card-controls {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-controls > .menu-button {
+      border: 1px solid var(--neutral-300);
+      margin-inline: 0rem;
+      padding-inline: 2rem;
+      flex: 0 0 auto;
+      height: 4.75rem;
+      line-height: 100%;
+    }
+
+    .card-controls > .toggle-switch {
+      background-color: var(--red-700);
+      width: 4.5rem;
+      height: 2.6rem;
+      border-radius: 1.35rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+
+    .toggle-switch > .toggle {
+      width: 2rem;
+      height: 2rem;
+      background-color: var(--neutral-0);
+      margin-block: 2px;
+      margin-right: 3px;
+      margin-left: auto;
+      border-radius: 50%;
+      padding: 0;
+      transition: transform 0.2s ease;
+      transform: translateX(0);
+    }
+
+    .toggle-switch:hover .toggle {
+      transform: translateX(-1.9rem);
+    }
+  </style>
   <div class="card-content">
     <img src="./public/images/logo-devlens.svg" alt="The DevLens logo">
     <div class="card-text">
@@ -8,5 +64,7 @@
   </div>
   <div class="card-controls">
     <button class="menu-button">Remove</button>
-    <button>Toggle</button></div>
+    <button class="toggle-switch">
+      <div class="toggle"></div>
+    </button></div>
 </div>
