@@ -46,6 +46,12 @@ h2 {
   margin-bottom: 1rem;
 }
 
+p {
+  line-height: 140%;
+  letter-spacing: -0.5px;
+  color: var(--neutral-600);
+}
+
 .popout {
   background-color: var(--neutral-0);
   border: 1px solid var(--neutral-200);
@@ -92,6 +98,7 @@ main {
 
 .menu-button {
   background-color: var(--neutral-0);
+  border: 1px solid var(--neutral-200);
   border-radius: 2.8rem;
   margin-inline: 0.75rem;
   padding-inline: 3.12rem;
@@ -112,7 +119,6 @@ main {
   padding: 2.5rem;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
 }
 
 .card-content {
@@ -126,14 +132,19 @@ main {
   margin-right: 2.5rem;
 }
 
-.card-text {
-  display: block;
-}
-
 .card-controls {
   margin-top: auto;
   display: flex;
   justify-content: space-between;
+}
+
+.card-controls > .menu-button {
+  border: 1px solid var(--neutral-300);
+  margin-inline: 0rem;
+  padding-inline: 2rem;
+  flex: 0 0 auto;
+  height: 4.75rem;
+  line-height: 100%;
 }
 
 .test {
