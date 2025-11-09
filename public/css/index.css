@@ -39,6 +39,13 @@ h1 {
   letter-spacing: -1px;
 }
 
+h2 {
+  font-size: 2.5rem;
+  line-height: 120%;
+  letter-spacing: -0.2px;
+  margin-bottom: 1rem;
+}
+
 .popout {
   background-color: var(--neutral-0);
   border: 1px solid var(--neutral-200);
@@ -102,7 +109,37 @@ main {
 .card {
   width: 382px;
   height: 200px;
-  text-align: center;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+}
+
+.card-content {
+  text-align: left;
+  display: flex;
+}
+
+.card-content > img {
+  width: 60px;
+  height: 60px;
+  margin-right: 2.5rem;
+}
+
+.card-text {
+  display: block;
+}
+
+.card-controls {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.test {
+  width: 100%;
+  height: 100%;
+  background-color: purple;
 }
 
 .active {
