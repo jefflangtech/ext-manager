@@ -195,3 +195,7 @@ main {
   background-color: var(--red-700);
   color: var(--neutral-0);
 }
+
+.hidden {
+  display: none;
+}
