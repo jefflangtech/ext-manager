@@ -17,14 +17,33 @@
   --red-400: #F25C54;
   --light-gradient: linear-gradient(180deg, #EBF2FC 0%, #DDFBF9 100%);
   --dark-gradient: linear-gradient(180deg, #04091B 0%, #091540 100%);
+  --light-drop-shadow: 3px 0px 8px 3px var(--neutral-200);
   font-size: 8px;
 }
 
+html {
+  --body-bg: var(--light-gradient);
+  --heading-primary: var(--neutral-900);
+  --text-primary: var(--neutral-600);
+  --bg-color: var(--neutral-0);
+  --border-primary: var(--neutral-200);
+  --drop-shadow: var(--light-drop-shadow);
+}
+
+html.dark {
+  --body-bg: var(--dark-gradient);
+  --heading-primary: var(--neutral-0);
+  --text-primary: var(--neutral-300);
+  --bg-color: var(--neutral-800);
+  --border-primary: var(--neutral-600);
+  --drop-shadow: 0px 0px 0px 0px;
+}
+
 body {
-  background: var(--light-gradient);
+  background: var(--body-bg);
   font-size: 2rem;
   font-family: 'Noto Sans', sans-serif;
-  color: var(--neutral-900);
+  color: var(--heading-primary);
   display: grid;
   grid-template-columns: 
     minmax(1.9rem, 1fr) 
@@ -53,10 +72,10 @@ p {
 }
 
 .popout {
-  background-color: var(--neutral-0);
-  border: 1px solid var(--neutral-200);
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-primary);
   border-radius: 2rem;
-  box-shadow: 3px 0px 8px 3px var(--neutral-200);
+  box-shadow: var(--drop-shadow);
 }
 
 #mode-switch {

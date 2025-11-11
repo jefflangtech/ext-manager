@@ -11,3 +11,18 @@ document.addEventListener("keydown", (event) => {
       }
   }
 });
+
+const modeToggleBtn = document.querySelector('#mode-switch');
+console.dir(modeToggleBtn);
+
+modeToggleBtn.addEventListener('click', (event) => {
+  const rootEl = document.querySelector('html');
+  const rootClasses = rootEl.classList;
+
+  if(rootClasses.contains('dark')) {
+    rootClasses.remove('dark');
+  } else {
+    rootClasses.add('dark');
+  }
+
+});
