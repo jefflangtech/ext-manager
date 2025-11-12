@@ -25,18 +25,26 @@ html {
   --body-bg: var(--light-gradient);
   --heading-primary: var(--neutral-900);
   --text-primary: var(--neutral-600);
+  --text-inverse: var(--neutral-0);
   --bg-color: var(--neutral-0);
   --border-primary: var(--neutral-200);
   --drop-shadow: var(--light-drop-shadow);
+  --btn-bg: var(--neutral-0);
+  --btn-border: var(--neutral-300);
+  --active-color: var(--red-700);
 }
 
 html.dark {
   --body-bg: var(--dark-gradient);
   --heading-primary: var(--neutral-0);
   --text-primary: var(--neutral-300);
+  --text-inverse: var(--neutral-900);
   --bg-color: var(--neutral-800);
   --border-primary: var(--neutral-600);
   --drop-shadow: 0px 0px 0px 0px;
+  --btn-bg: var(--neutral-700);
+  --btn-border: var(--neutral-600);
+  --active-color: var(--red-400);
 }
 
 body {
@@ -69,6 +77,19 @@ p {
   line-height: 140%;
   letter-spacing: -0.5px;
   color: var(--neutral-600);
+}
+
+.text-3 {
+  font-size: 2.5rem;
+  line-height: 140%;
+  letter-spacing: -0.3px;
+  font-weight: 500;
+}
+
+.text-6 {
+  line-height: 140%;
+  letter-spacing: -0.5px;
+  font-weight: 500;
 }
 
 .popout {
@@ -116,8 +137,9 @@ main {
 }
 
 .menu-button {
-  background-color: var(--neutral-0);
-  border: 1px solid var(--neutral-200);
+  background-color: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  color: inherit;
   border-radius: 2.8rem;
   margin-inline: 0.75rem;
   padding-inline: 3.12rem;
@@ -159,21 +181,21 @@ main {
 }
 
 .card-controls > .menu-button {
-  border: 1px solid var(--neutral-300);
+  border: 1px solid var(-btn-border);
   margin-inline: 0rem;
   padding-inline: 2rem;
   flex: 0 0 auto;
   height: 4.75rem;
   line-height: 100%;
   &:hover {
-    background-color: var(--red-700);
+    background-color: var(--active-color);
     color: var(--neutral-0);
-    border: 1px solid var(--red-700);
+    border: 1px solid var(--active-color);
   }
 }
 
 .card-controls > .toggle-switch {
-  background-color: var(--red-700);
+  background-color: var(--active-color);
   width: 4.5rem;
   height: 2.6rem;
   border-radius: 1.35rem;
@@ -211,8 +233,10 @@ main {
 }
 
 .active {
-  background-color: var(--red-700);
-  color: var(--neutral-0);
+  background-color: var(--active-color);
+  color: var(--text-inverse);
+  border: 1px solid var(--active-color);
+
 }
 
 .hidden {
