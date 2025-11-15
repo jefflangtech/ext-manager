@@ -30,8 +30,12 @@ html {
   --border-primary: var(--neutral-200);
   --drop-shadow: var(--light-drop-shadow);
   --btn-bg: var(--neutral-0);
+  --mode-btn-bg: var(--neutral-100);
+  --mode-btn-bg-hover: var(--neutral-300);
   --btn-border: var(--neutral-300);
   --active-color: var(--red-700);
+  --toggle-bg: var(--neutral-300);
+  --white: var(--neutral-0);
 }
 
 html.dark {
@@ -43,8 +47,12 @@ html.dark {
   --border-primary: var(--neutral-600);
   --drop-shadow: 0px 0px 0px 0px;
   --btn-bg: var(--neutral-700);
+  --mode-btn-bg: var(--neutral-700);
+  --mode-btn-bg-hover: var(--neutral-600);
   --btn-border: var(--neutral-600);
   --active-color: var(--red-400);
+  --toggle-bg: var(--neutral-600);
+  --white: var(--neutral-0);
 }
 
 body {
@@ -76,7 +84,7 @@ h2 {
 p {
   line-height: 140%;
   letter-spacing: -0.5px;
-  color: var(--neutral-600);
+  color: var(--text-primary);
 }
 
 .text-3 {
@@ -102,10 +110,14 @@ p {
 #mode-switch {
   width: 6.25rem;
   height: 6.25rem;
+  background-color: var(--mode-btn-bg);
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 1rem;
+  &:hover {
+    background-color: var(--mode-btn-bg-hover);
+  }
 }
 
 main {
@@ -181,7 +193,7 @@ main {
 }
 
 .card-controls > .menu-button {
-  border: 1px solid var(-btn-border);
+  border: 1px solid var(--btn-border);
   margin-inline: 0rem;
   padding-inline: 2rem;
   flex: 0 0 auto;
@@ -189,7 +201,7 @@ main {
   line-height: 100%;
   &:hover {
     background-color: var(--active-color);
-    color: var(--neutral-0);
+    color: var(--text-inverse);
     border: 1px solid var(--active-color);
   }
 }
@@ -208,7 +220,7 @@ main {
 .toggle-switch > .toggle {
   width: 2rem;
   height: 2rem;
-  background-color: var(--neutral-0);
+  background-color: var(--white);
   margin-block: 2px;
   margin-right: 3px;
   margin-left: auto;
@@ -226,7 +238,7 @@ main {
 }
 
 .toggle-switch.inactive {
-  background-color: var(--neutral-300);
+  background-color: var(--toggle-bg);
   & > .toggle {
     transform: translateX(-1.8rem);
   }
