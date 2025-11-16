@@ -12,6 +12,7 @@
   --neutral-200: #D6E2F5;
   --neutral-100: #EEEEEE;
   --neutral-0: #FBFDFE;
+  --white: #FFF;
   --red-700: #C7231A;
   --red-500: #DE4840;
   --red-400: #F25C54;
@@ -22,6 +23,7 @@
 }
 
 html {
+  --logo: var(--neutral-900);
   --body-bg: var(--light-gradient);
   --heading-primary: var(--neutral-900);
   --text-primary: var(--neutral-600);
@@ -35,10 +37,11 @@ html {
   --btn-border: var(--neutral-300);
   --active-color: var(--red-700);
   --toggle-bg: var(--neutral-300);
-  --white: var(--neutral-0);
+  --neutral: var(--neutral-0);
 }
 
 html.dark {
+  --logo: var(--white);
   --body-bg: var(--dark-gradient);
   --heading-primary: var(--neutral-0);
   --text-primary: var(--neutral-300);
@@ -52,7 +55,7 @@ html.dark {
   --btn-border: var(--neutral-600);
   --active-color: var(--red-400);
   --toggle-bg: var(--neutral-600);
-  --white: var(--neutral-0);
+  --neutral: var(--neutral-0);
 }
 
 body {
@@ -220,7 +223,7 @@ main {
 .toggle-switch > .toggle {
   width: 2rem;
   height: 2rem;
-  background-color: var(--white);
+  background-color: var(--neutral);
   margin-block: 2px;
   margin-right: 3px;
   margin-left: auto;

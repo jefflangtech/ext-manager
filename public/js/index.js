@@ -1,3 +1,4 @@
+// this comment added as a test
 const imgBase = document.documentElement.dataset.imageAssets;
 
 const overlay = document.getElementsByClassName('overlay')[0];
@@ -12,52 +13,90 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-// remove the old direct toggle code and replace with initialization that
-// applies the user's system preference and keeps icon/class in sync.
 document.addEventListener('DOMContentLoaded', () => {
   const rootEl = document.documentElement;
-  const imgBase = rootEl.dataset.imageAssets; // already defined earlier but safe to re-read
+  const imgBase = rootEl.dataset.imageAssets;
   const modeToggleBtn = document.querySelector('#mode-switch');
   const modeIcon = document.querySelector('.theme-toggle__icon');
+  const siteLogo = document.getElementById('site-logo');
 
-  if (!modeIcon) return; // nothing to do if icon/button missing
+  // cached reference to the text portion inside the embedded SVG
+  let embeddedLogoTextEl = null;
+
+  // Read the --logo CSS variable from the root element (will reflect html or html.dark)
+  const getLogoColorFromCSS = () => {
+    try {
+      const cs = getComputedStyle(rootEl);
+      const val = cs.getPropertyValue('--logo') || '';
+      return val.trim() || '#091540'; // fallback to original dark-blue if missing
+    } catch (e) {
+      return '#091540';
+    }
+  };
+
+  const syncLogoFill = () => {
+    const color = getLogoColorFromCSS();
+    if (embeddedLogoTextEl) {
+      embeddedLogoTextEl.setAttribute('fill', color);
+      return;
+    }
+    // attempt to locate it if object already loaded
+    if (siteLogo && siteLogo.contentDocument) {
+      try {
+        const el = siteLogo.contentDocument.querySelector('.logo-text');
+        if (el) {
+          embeddedLogoTextEl = el;
+          embeddedLogoTextEl.setAttribute('fill', color);
+        }
+      } catch (e) {
+        // ignore access errors
+      }
+    }
+  };
+
+  // when the <object> finishes loading its document, cache the element and sync
+  if (siteLogo) {
+    siteLogo.addEventListener('load', () => {
+      try {
+        embeddedLogoTextEl = siteLogo.contentDocument.querySelector('.logo-text');
+      } catch (e) {
+        embeddedLogoTextEl = null;
+      }
+      syncLogoFill();
+    });
+    // try once immediately in case object was already parsed
+    syncLogoFill();
+  }
 
   const applyMode = (isDark) => {
     if (isDark) {
       rootEl.classList.add('dark');
-      // show the "switch to light" icon when page is currently dark
-      modeIcon.src = `${imgBase}${modeIcon.dataset.light}.svg`;
+      if (modeIcon) modeIcon.src = `${imgBase}${modeIcon.dataset.light}.svg`;
     } else {
       rootEl.classList.remove('dark');
-      // show the "switch to dark" icon when page is currently light
-      modeIcon.src = `${imgBase}${modeIcon.dataset.dark}.svg`;
+      if (modeIcon) modeIcon.src = `${imgBase}${modeIcon.dataset.dark}.svg`;
     }
+    // read CSS variable after class change and apply to embedded SVG
+    syncLogoFill();
   };
 
-  // Check system preference and apply it
   const mq = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
   if (mq) {
     applyMode(mq.matches);
-
-    // react to future changes in system preference
     if (typeof mq.addEventListener === 'function') {
       mq.addEventListener('change', (e) => applyMode(e.matches));
     } else if (typeof mq.addListener === 'function') {
       mq.addListener((e) => applyMode(e.matches));
     }
   } else {
-    // fallback to light if no system preference API
     applyMode(false);
   }
 
-  // Attach toggle behavior (guarded)
   if (modeToggleBtn) {
     modeToggleBtn.addEventListener('click', () => {
-      // toggle returns true if the class is now present
       const isNowDark = rootEl.classList.toggle('dark');
-      // after toggling, show the icon for the next action:
-      // if it's now dark, show "switch to light" (dataset.light), otherwise show "switch to dark" (dataset.dark)
-      modeIcon.src = `${imgBase}${isNowDark ? modeIcon.dataset.light : modeIcon.dataset.dark}.svg`;
+      if (modeIcon) modeIcon.src = `${imgBase}${isNowDark ? modeIcon.dataset.light : modeIcon.dataset.dark}.svg`;
+      syncLogoFill(isNowDark);
     });
   }
 });

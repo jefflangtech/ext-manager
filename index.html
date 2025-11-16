@@ -20,7 +20,10 @@
 
   <!-- Fonts -->
   <link rel="preload" href="./public/fonts/NotoSans-VariableFont_wdth,wght.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-  
+
+  <!-- Preload logo used by the <object> element -->
+  <link rel="preload" href="./public/images/logo.svg" as="image" type="image/svg+xml">
+
   <!-- Robots -->
   <meta name="robots" content="index,follow">
 </head>
@@ -40,7 +43,9 @@
 
   <main>
     <div class="hero popout">
-      <img src="./public/images/logo.svg" alt="Extensions Manager App Logo">
+      <object id="site-logo" class="site-logo" type="image/svg+xml" data="./public/images/logo.svg" role="img" aria-label="Extensions Manager App Logo">
+        <img src="./public/images/logo.svg" alt="Extensions Manager App Logo">
+      </object>
       <button id="mode-switch">
         <img class="theme-toggle__icon" data-light="theme-icon-light" data-dark="theme-icon-dark" src="./public/images/theme-icon-light.svg" alt="Toggle Light or Dark Mode">
       </button>
@@ -77,7 +82,7 @@
         </div>
         <div class="card-controls">
           <button class="menu-button text-6">Remove</button>
-          <button class="toggle-switch inactive">
+          <button class="toggle-switch">
             <div class="toggle"></div>
           </button>
         </div>
@@ -167,7 +172,7 @@
         </div>
         <div class="card-controls">
           <button class="menu-button text-6">Remove</button>
-          <button class="toggle-switch inactive">
+          <button class="toggle-switch">
             <div class="toggle"></div>
           </button>
         </div>
@@ -212,7 +217,7 @@
         </div>
         <div class="card-controls">
           <button class="menu-button text-6">Remove</button>
-          <button class="toggle-switch inactive">
+          <button class="toggle-switch">
             <div class="toggle"></div>
           </button>
         </div>
